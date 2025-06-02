@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Pokémon Egg Game</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+<%- include('partials/header', { user: user }) %>
+<div class="centered">
+  <h1>Willkommen, <%= user.username %>!</h1>
+  <div class="stats">
+    <div>Level: <%= user.level %></div>
+    <div>Coins: <%= user.coins %></div>
+    <div>Packs (gewöhnlich): <%= user.packs_common %></div>
+    <div>Offene Eier: <%= eggCount %></div>
+  </div>
+  <form action="/claim-packs" method="POST"><button>Stündliche Packs abholen (+3)</button></form>
+  <form action="/open-pack" method="POST"><button>Gewöhnliches Pack öffnen (1 verbrauchen)</button></form>
+  <h2>Ei kaufen</h2>
+  <form action="/buy-egg" method="POST">
+    <select name="rarity">
+      <% rarities.forEach(r => { %>
+        <option value="<%= r.key %>"><%= r.label %> (<%= r.price %> Coins)</option>
+      <% }); %>
+    </select>
+    <button>Ei kaufen</button>
+  </form>
+</div>
+<%- include('partials/footer') %>
+</body>
+</html>

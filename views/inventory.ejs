@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Inventar</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+<%- include('partials/header', { user: user }) %>
+<div class="centered">
+  <h2>Dein Inventar</h2>
+  <form method="GET" action="/inventory">
+    <label>Sortieren nach:
+      <select name="sort" onchange="this.form.submit()">
+        <option value="date_obtained" <%= sortBy==='date_obtained'?'selected':'' %>>Datum</option>
+        <option value="rarity" <%= sortBy==='rarity'?'selected':'' %>>Seltenheit</option>
+        <option value="pokemon_name" <%= sortBy==='pokemon_name'?'selected':'' %>>Name</option>
+        <option value="value" <%= sortBy==='value'?'selected':'' %>>Wert</option>
+      </select>
+    </label>
+  </form>
+  <div class="inventory-list">
+    <% pokemon.forEach(mon => { %>
+      <div class="card <%= mon.rarity %>">
+        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/<%= mon.pokemon_id %>.png" alt="<%= mon.pokemon_name %>"/>
+        <div><b><%= mon.pokemon_name.charAt(0).toUpperCase() + mon.pokemon_name.slice(1) %></b></div>
+        <div>Seltenheit: <span class="<%= mon.rarity %>"><%= mon.rarity %></span></div>
+        <div>Wert: <%= mon.value %></div>
+        <div>Gefangen: <%= new Date(mon.date_obtained).toLocaleString() %></div>
+        <% if (mon.is_shiny) { %><div class="shiny">✨ Shiny!</div><% } %>
+        <form method="POST" action="/sell">
+          <input type="hidden" name="id" value="<%= mon.id %>"/>
+          <button>Verkaufen</button>
+        </form>
+      </div>
+    <% }); %>
+  </div>
+</div>
+<%- include('partials/footer') %>
+</body>
+</html>

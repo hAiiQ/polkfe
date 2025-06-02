@@ -1,0 +1,20 @@
+{
+  "name": "pokemon-egg-game",
+  "version": "1.0.0",
+  "description": "Pokémon Eier-Öffnen-Spiel mit User-Login, Inventar, Admin-Panel und mehr",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "hAiQ & Copilot",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.2",
+    "ejs": "^3.1.9",
+    "express": "^4.19.2",
+    "express-session": "^1.17.3",
+    "node-fetch": "^2.6.12",
+    "sqlite3": "^5.1.6"
+  }
+}

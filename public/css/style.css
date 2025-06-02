@@ -1,0 +1,128 @@
+body {
+  background: linear-gradient(135deg, #e0e7ff 0%, #fffde4 100%);
+  font-family: 'Segoe UI', Verdana, sans-serif;
+  margin: 0;
+  min-height: 100vh;
+}
+.centered {
+  max-width: 700px;
+  margin: 40px auto;
+  background: rgba(255,255,255,0.95);
+  border-radius: 16px;
+  padding: 2em;
+  box-shadow: 0 4px 24px #0003;
+}
+header nav {
+  background: #313866;
+  color: #fff;
+  padding: 1em 0.5em;
+  text-align: center;
+  border-radius: 0 0 15px 15px;
+}
+header nav a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 1em;
+  font-weight: bold;
+}
+header nav a:hover {
+  text-shadow: 0 0 4px gold;
+}
+footer {
+  text-align: center;
+  margin: 2em 0 0 0;
+  color: #888;
+}
+.stats {
+  display: flex;
+  gap: 2em;
+  justify-content: center;
+  margin-bottom: 1em;
+  font-size: 1.2em;
+}
+.inventory-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.card {
+  border-radius: 12px;
+  padding: 1em;
+  min-width: 160px;
+  max-width: 180px;
+  text-align: center;
+  background: #f4f4f4;
+  box-shadow: 0 2px 16px #0001;
+  position: relative;
+}
+.card img {
+  width: 96px;
+  height: 96px;
+  background: #fff;
+  border-radius: 8px;
+}
+.card.common { border: 2px solid #bbb; background: #eee; }
+.card.uncommon { border: 2px solid #47d147; background: #e8ffe8; }
+.card.rare { border: 2px solid #3a8dde; background: #e4f0ff; }
+.card.epic { border: 2px solid #a259e6; background: #f3eaff; }
+.card.legendary { border: 2px solid #ffde59; background: #fffbe4; }
+.card .shiny {
+  color: gold;
+  font-weight: bold;
+  animation: glimmer 1s infinite alternate;
+}
+@keyframes glimmer {
+  0% { text-shadow: 0 0 6px gold, 0 0 2px #fff; }
+  100% { text-shadow: 0 0 10px #fff, 0 0 4px gold; }
+}
+.error { color: red; margin: 1em 0; }
+.login-box, .register-box {
+  margin: 120px auto;
+  background: #fff;
+  padding: 2em 2em;
+  border-radius: 15px;
+  box-shadow: 0 4px 24px #0001;
+  width: 340px;
+}
+button {
+  background: #313866;
+  color: #fff;
+  border: none;
+  padding: 0.6em 1.5em;
+  border-radius: 8px;
+  font-size: 1em;
+  cursor: pointer;
+  margin-top: 0.7em;
+  transition: background 0.2s;
+}
+button:hover {
+  background: #504099;
+}
+#egg-anim {
+  width: 120px;
+  height: 160px;
+  background: url('/images/egg.png') no-repeat center center / contain;
+  margin: 0 auto 20px;
+  position:relative;
+  filter: drop-shadow(0 0 20px #fff);
+}
+#egg-anim.common { box-shadow: 0 0 30px #bbb; }
+#egg-anim.uncommon { box-shadow: 0 0 30px #47d147; }
+#egg-anim.rare { box-shadow: 0 0 30px #3a8dde; }
+#egg-anim.epic { box-shadow: 0 0 30px #a259e6; }
+#egg-anim.legendary { box-shadow: 0 0 40px #ffde59; }
+#egg-anim.opening {
+  animation: shake 0.7s 3 alternate;
+}
+@keyframes shake {
+  0% { transform: rotate(-5deg);}
+  20% { transform: rotate(5deg);}
+  40% { transform: rotate(-3deg);}
+  60% { transform: rotate(3deg);}
+  80% { transform: rotate(-2deg);}
+  100% { transform: rotate(0);}
+}
+#egg-opening #result {
+  margin-top: 2em;
+  font-size: 1.2em;
+}

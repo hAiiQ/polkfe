@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Nutzer suchen</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+<%- include('partials/header', { user: user }) %>
+<div class="centered">
+  <h2>Nutzer suchen</h2>
+  <form method="POST">
+    <input type="text" name="query" value="<%= query %>" placeholder="Benutzername" required/>
+    <button>Suchen</button>
+  </form>
+  <% if(results){ %>
+    <ul>
+    <% results.forEach(u => { %>
+      <li><a href="/user/<%= u.id %>/inventory"><%= u.username %></a></li>
+    <% }); %>
+    </ul>
+  <% } %>
+</div>
+<%- include('partials/footer') %>
+</body>
+</html>
