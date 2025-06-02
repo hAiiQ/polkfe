@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Start | Pokémon Egg Game</title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <script defer src="/js/egg_open.js"></script>
+</head>
+<body>
+<%- include('partials/header', { user: user }) %>
+
+<div class="centered main-bg">
+  <h1 class="main-title">Pokémon Egg Game</h1>
+  <div class="stats">
+    <div class="statblock">Level <strong><%= user.level %></strong></div>
+    <div class="statblock">XP <strong><%= user.xp %></strong></div>
+    <div class="statblock">Coins <strong><%= user.coins %></strong></div>
+  </div>
+  <div class="xp-bar-wrap">
+    <div class="xp-bar-bg">
+      <div class="xp-bar" style="width:<%= Math.min(100, Math.floor(user.xp%100)) %>%"></div>
+    </div>
+    <div class="xp-bar-label"><%= user.xp%100 %>/100 XP bis Level <%= user.level+1 %></div>
+  </div>
+  <h2>Ei öffnen</h2>
+  <form id="eggForm" class="egg-form">
+    <select id="raritySelect" name="rarity">
+      <% rarities.forEach(r => { %>
+        <option value="<%= r.key %>" <%= r.key==='common'?'selected':'' %>><%= r.label %> (<%= r.price %> Coins)</option>
+      <% }); %>
+    </select>
+    <button id="openEggBtn" type="submit">Ei jetzt öffnen!</button>
+  </form>
+  <div id="result"></div>
+</div>
+<%- include('partials/footer') %>
+</body>
+</html>

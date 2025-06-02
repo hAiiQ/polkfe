@@ -1,0 +1,20 @@
+{
+  "name": "pokemon-egg-game",
+  "version": "1.0.0",
+  "main": "app.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.2",
+    "connect-sqlite3": "^0.9.0",
+    "ejs": "^3.1.10",
+    "express": "^4.21.2",
+    "node-fetch": "^2.6.12",
+    "session": "^0.1.0",
+    "sqlite3": "^5.1.7",
+    "express-session": "^1.17.3"
+  }
+}

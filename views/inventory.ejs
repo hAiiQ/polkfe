@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Inventar</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+<%- include('partials/header', { user: user }) %>
+<div class="centered main-bg">
+  <h2>Dein Inventar</h2>
+  <div class="inventory-list">
+    <% pokemon.forEach(mon => { %>
+      <div class="card <%= mon.rarity %>">
+        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/<%= mon.pokemon_id %>.png" alt="<%= mon.display_name %>"/>
+        <div><b><%= mon.display_name %></b></div>
+        <div>Typ: <%= mon.typen %></div>
+        <div>Generation: <%= mon.gen %></div>
+        <div>Rarität: <span class="<%= mon.rarity %>"><%= mon.rarity %></span> <%= mon.is_shiny ? '✨' : '' %></div>
+        <div>Anzahl: <%= mon.count %></div>
+        <% if (mon.count > 1) { %>
+        <form method="POST" action="/sell" style="margin-top:8px;">
+          <input type="hidden" name="id" value="<%= mon.id %>"/>
+          <button class="sell-btn">Verkaufen (+<%= Math.floor(mon.rarity === 'common' ? 15 : mon.rarity === 'uncommon' ? 50 : mon.rarity === 'rare' ? 200 : mon.rarity === 'epic' ? 700 : 2000) %> Coins)</button>
+        </form>
+        <% } %>
+      </div>
+    <% }); %>
+  </div>
+</div>
+<%- include('partials/footer') %>
+</body>
+</html>

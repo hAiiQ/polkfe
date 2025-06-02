@@ -1,0 +1,12 @@
+<header>
+  <nav class="navbar">
+    <a href="/" class="nav-logo">Start</a>
+    <a href="/inventory">Inventar</a>
+    <a href="/leaderboard">Top 10</a>
+    <span class="nav-spacer"></span>
+    <% if (user) { %>
+      <span class="nav-user"><%= user.username %></span>
+      <a href="/logout" class="logout-btn">Logout</a>
+    <% } %>
+  </nav>
+</header>
